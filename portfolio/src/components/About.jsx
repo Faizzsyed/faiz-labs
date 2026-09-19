@@ -1,15 +1,25 @@
 function About() {
   return (
     <section className="about" id="about">
-  <h2>About Me</h2>
+      <div className="section-header">
+        <h2>About Me</h2>
+      </div>
 
-  <p>
-    I'm Faiz Sayyed, a Full Stack Developer and AI Automation Engineer
-    passionate about building modern web applications, automation systems,
-    and IoT solutions. I enjoy creating real-world projects using React,
-    Node.js, Python, ESP32, OpenCV, and AI tools like n8n and OpenAI.
-  </p>
-</section>
+      <div className="about-content">
+        <p className="about-text">
+          I am an Electronics & Computer Science Engineering student focused on building complete, usable products. 
+          My development experience spans across web platforms, mobile applications, and desktop utilities. 
+          I frequently experiment with local AI models, IoT integrations, and automation systems to bridge hardware and software.
+        </p>
+
+        <div className="about-labels">
+          <span className="about-label">Engineering Student</span>
+          <span className="about-label">Full Stack</span>
+          <span className="about-label">Desktop Apps</span>
+          <span className="about-label">AI Experiments</span>
+        </div>
+      </div>
+    </section>
   );
 }
 

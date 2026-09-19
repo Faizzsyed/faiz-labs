@@ -13,13 +13,13 @@ function ParticleBackground() {
       init={particlesInit}
       options={{
         background: {
-  color: "#050816",
-},
+          color: "#050816",
+        },
 
-particles: {
-  number: {
-    value: 80,
-  },
+        particles: {
+          number: {
+            value: typeof window !== 'undefined' && window.innerWidth < 768 ? 30 : 80,
+          },
 
   color: {
     value: "#00ffff",

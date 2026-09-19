@@ -1,10 +1,16 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import { FaGithub } from "react-icons/fa";
 import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 function Hero() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     
     <section className="hero">
@@ -20,21 +26,34 @@ function Hero() {
       <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="hero-subtitle"
+      >
+        Electronics & Computer Science Engineering Student
+      </motion.h2>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
+        className="hero-focus"
       >
        <TypeAnimation
   sequence={[
-    "Full Stack Developer",
-    1500,
-    "Python Developer",
-    1500,
-    "AI Automation Engineer",
-    1500,
-    "Computer Vision Developer",
-    1500,
+    "Building Full-stack Web Applications",
+    2000,
+    "Building Mobile Applications",
+    2000,
+    "Building Desktop Utilities",
+    2000,
+    "Local AI Experimentation",
+    2000,
+    "Building Product-oriented Projects",
+    2000,
   ]}
   speed={50}
   repeat={Infinity}
+  className="type-animation-text"
 />
 
 <div className="floating-icons">
@@ -47,47 +66,42 @@ function Hero() {
 
 </div>
 
-      </motion.h2>
+      </motion.div>
 
-      <a href="#projects">
-  <button>View Projects</button>
-</a>
-
-      <a>
+      <motion.div 
+        className="hero-cta-container"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5 }}
+      >
+        <a href="#projects" className="action-btn primary">
+          View Projects
+        </a>
         <a
-  href="https://www.linkedin.com/in/faizsayyed-tech"
-  target="_blank"
-  rel="noreferrer"
-  className="resume-btn"
+          href="https://github.com/Faizzsyed"
+          target="_blank"
+          rel="noreferrer"
+          className="action-btn"
+        >
+          <FaGithub /> GitHub
+        </a>
+      </motion.div>
+
+<motion.div 
+  className="hero-domain-labels"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 2 }}
 >
-  View LinkedIn Profile
-</a>
-      
-  
-</a>
+  <div className="domain-label">Web</div>
+  <div className="domain-label">Mobile</div>
+  <div className="domain-label">Desktop</div>
+  <div className="domain-label">AI</div>
+</motion.div>
 
     </section>
     
   );
-  useEffect(() => {
-  AOS.init();
-}, []);
-<div className="hero-stats">
-  <div>
-    <h3>3+</h3>
-    <p>Projects</p>
-  </div>
-
-  <div>
-    <h3>5+</h3>
-    <p>Technologies</p>
-  </div>
-
-  <div>
-    <h3>100%</h3>
-    <p>Passion</p>
-  </div>
-</div>
 }
 
 export default Hero;
