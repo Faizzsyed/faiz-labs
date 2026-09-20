@@ -8,7 +8,9 @@ export const featuredProjects = [
     status: "Active Development",
     github: "",
     live: "",
-    image: "/projects/pdf-tools.png"
+    image: "/projects/pdf-tools.png",
+    imageFit: "contain",
+    imageBackground: "rgba(10, 15, 35, 0.8)"
   },
   {
     id: "varys",
@@ -19,7 +21,8 @@ export const featuredProjects = [
     status: "Active Development",
     github: "https://github.com/Faizzsyed/Varys",
     live: "",
-    image: "/projects/varys.png"
+    image: "/projects/varys.png",
+    imageFit: "cover"
   },
   {
     id: "connectwell",
@@ -30,7 +33,8 @@ export const featuredProjects = [
     status: "Completed",
     github: "https://github.com/Faizzsyed/connectwell-digital",
     live: "",
-    image: "/projects/connectwell.png"
+    image: "/projects/connectwell.png",
+    imageFit: "cover"
   },
   {
     id: "durabedz",
@@ -41,7 +45,8 @@ export const featuredProjects = [
     status: "Completed",
     github: "",
     live: "",
-    image: "/projects/durabedz.png"
+    image: "/projects/durabedz.png",
+    imageFit: "cover"
   },
   {
     id: "passport-photo-studio",
@@ -52,7 +57,8 @@ export const featuredProjects = [
     status: "Active Development",
     github: "https://github.com/ProfMohsinKhan/Passport-size-photo-maker",
     live: "",
-    image: "/projects/passport-photo-studio.png"
+    image: "/projects/passport-photo-studio.png",
+    imageFit: "cover"
   }
 ];
 

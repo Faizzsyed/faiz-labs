@@ -3,18 +3,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { featuredProjects, allProjects, filterCategories } from "../data/projects";
 
-const ProjectImage = ({ src, alt, title }) => {
+const ProjectImage = ({ src, alt, title, project }) => {
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const fit = project.imageFit || 'cover';
+  const position = project.imagePosition || 'center';
+  const bg = project.imageBackground || '#111';
+
   return (
-    <div className="featured-image-container">
+    <div className="featured-image-container" style={{ background: bg }}>
       {!hasError && src ? (
         <img 
           src={src} 
           alt={alt} 
           loading="lazy"
           className={`project-screenshot ${isLoaded ? 'loaded' : ''}`}
+          style={{ 
+            objectFit: fit, 
+            objectPosition: position, 
+            padding: fit === 'contain' ? '30px' : '0' 
+          }}
           onLoad={() => setIsLoaded(true)}
           onError={() => setHasError(true)}
         />
@@ -56,7 +65,7 @@ function Projects() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
           >
-            <ProjectImage src={project.image} alt={project.title} title={project.title} />
+            <ProjectImage src={project.image} alt={project.title} title={project.title} project={project} />
             
             <div className="featured-content">
               <div className="project-meta">
@@ -76,20 +85,16 @@ function Projects() {
               </div>
               
               <div className="project-actions">
-                {project.github ? (
+                {project.github && (
                   <a href={project.github} target="_blank" rel="noreferrer" className="action-btn">
                     <FaGithub /> {project.id === 'passport-photo-studio' ? 'Repository' : 'GitHub'}
                   </a>
-                ) : (
-                  <span className="action-btn disabled"><FaGithub /> GitHub</span>
                 )}
                 
-                {project.live ? (
+                {project.live && (
                   <a href={project.live} target="_blank" rel="noreferrer" className="action-btn primary">
                     <FaExternalLinkAlt /> Live Demo
                   </a>
-                ) : (
-                  <span className="action-btn primary disabled"><FaExternalLinkAlt /> Live Demo</span>
                 )}
               </div>
             </div>
