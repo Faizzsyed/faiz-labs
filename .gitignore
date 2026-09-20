@@ -9,3 +9,8 @@ dist.zip
 Thumbs.db
 .vscode/
 .idea/
+
+# Firebase
+.firebase/
+firebase-debug.log*
+ui-debug.log

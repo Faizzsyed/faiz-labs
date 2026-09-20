@@ -805,12 +805,37 @@ body{
     font-size: 1.2rem;
   }
 
+  .hero {
+    min-height: auto;
+    padding-top: 130px;
+    padding-bottom: 50px;
+  }
+
   .hero h1 {
-    font-size: 3rem;
+    font-size: 2.2rem;
   }
 
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .hero-focus {
+    font-size: 0.95rem;
+    min-height: 60px;
+  }
+
+  .hero-domain-labels {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .domain-label {
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
 
   .about, .skills, .projects, .experience, .contact {
@@ -824,10 +849,13 @@ body{
   .hero-cta-container {
     flex-direction: column;
     width: 100%;
+    margin-bottom: 40px;
   }
   
   .hero-cta-container .action-btn {
+    width: 100%;
     justify-content: center;
+    min-height: 44px;
   }
   
   .contact-actions {
@@ -854,6 +882,12 @@ body{
   0 0 60px var(--accent);
 
   z-index:9999;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
 }
 .spotlight{
   position:fixed;

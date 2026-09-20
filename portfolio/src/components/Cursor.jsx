@@ -1,11 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Cursor() {
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
   useEffect(() => {
-    // Mobile par cursor disable
-    if (window.innerWidth <= 768) return;
+    // Detect touch capability
+    const checkTouch = () => {
+      return (
+        window.matchMedia("(pointer: coarse)").matches ||
+        window.matchMedia("(hover: none)").matches ||
+        (navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
+      );
+    };
+
+    const isTouch = checkTouch();
+    setIsTouchDevice(isTouch);
+
+    if (isTouch) return;
 
     const cursor = document.querySelector(".custom-cursor");
+    if (!cursor) return;
 
     const moveCursor = (e) => {
       cursor.style.left = e.clientX + "px";
@@ -19,8 +33,7 @@ function Cursor() {
     };
   }, []);
 
-  // Mobile par kuch render mat karo
-  if (window.innerWidth <= 768) return null;
+  if (isTouchDevice) return null;
 
   return <div className="custom-cursor"></div>;
 }

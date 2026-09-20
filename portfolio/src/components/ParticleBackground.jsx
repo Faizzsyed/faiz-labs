@@ -1,6 +1,6 @@
-import { useContext } from "react";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+import { useContext, useEffect, useState, useMemo } from "react";
+import Particles from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 import { AccentContext } from "../context/AccentContext";
 
 const accentColors = {
@@ -12,34 +12,101 @@ const accentColors = {
 
 function ParticleBackground() {
   const { accent } = useContext(AccentContext);
+  const [isMobile, setIsMobile] = useState(false);
+  const [particlesInitError, setParticlesInitError] = useState(false);
 
-  const particlesInit = async (main) => {
-    await loadFull(main);
+  useEffect(() => {
+    // Detect mobile / touch for reduced particles & interactions
+    const checkMobile = () => {
+      setIsMobile(
+        window.innerWidth < 768 || 
+        window.matchMedia("(pointer: coarse)").matches ||
+        window.matchMedia("(hover: none)").matches
+      );
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const particlesInit = async (engine) => {
+    try {
+      await loadSlim(engine);
+    } catch (e) {
+      console.error("Particles initialization failed", e);
+      setParticlesInitError(true);
+    }
   };
+
+  const options = useMemo(() => {
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    
+    return {
+      background: {
+        color: "#050816",
+      },
+      fpsLimit: isMobile ? 30 : 60,
+      particles: {
+        number: {
+          value: isMobile ? 25 : 60,
+        },
+        color: {
+          value: accentColors[accent] || "#00E5FF",
+        },
+        opacity: {
+          value: { min: 0.1, max: 0.5 },
+        },
+        size: {
+          value: { min: 1, max: 2 },
+        },
+        links: {
+          enable: true,
+          color: accentColors[accent] || "#00E5FF",
+          opacity: 0.15,
+          distance: 150,
+        },
+        move: {
+          enable: !prefersReducedMotion,
+          speed: isMobile ? 0.5 : 1,
+        },
+      },
+      interactivity: {
+        events: {
+          onHover: {
+            enable: !isMobile, // Disable on mobile/touch
+            mode: "grab",
+          },
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            links: { opacity: 0.5 }
+          }
+        }
+      },
+      detectRetina: true,
+    };
+  }, [accent, isMobile]);
+
+  if (particlesInitError) {
+    return <div style={{ background: "#050816", width: "100%", height: "100%", position: "absolute", zIndex: -1, top: 0, left: 0 }} />;
+  }
 
   return (
     <Particles
       id="tsparticles"
+      particlesLoaded={(container) => {}}
       init={particlesInit}
-      options={{
-        background: {
-          color: "#050816",
-        },
-
-        particles: {
-          number: {
-            value: typeof window !== 'undefined' && window.innerWidth < 768 ? 30 : 80,
-          },
-
-          color: {
-            value: accentColors[accent] || "#00E5FF",
-          },
-
-          move: {
-            enable: true,
-            speed: 2,
-          },
-        },
+      options={options}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
       }}
     />
   );
