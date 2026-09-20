@@ -21,7 +21,7 @@ export const featuredProjects = [
     status: "Active Development",
     github: "https://github.com/Faizzsyed/attendai-pro",
     live: "",
-    image: "",
+    image: "/projects/attendai.jpg",
     imageFit: "cover"
   },
   {
@@ -33,7 +33,19 @@ export const featuredProjects = [
     status: "Completed",
     github: "https://github.com/Faizzsyed/connectwell-digital",
     live: "",
-    image: "/projects/connectwell.png",
+    image: "/projects/connectwell.jpg",
+    imageFit: "cover"
+  },
+  {
+    id: "paperforge",
+    title: "PaperForge",
+    category: "Desktop / Document Tools",
+    desc: "Privacy-first document workspace designed to bring multiple PDF and document tools into one focused interface with a clean dashboard experience.",
+    tech: ["Document Tools", "Workspace UI", "Privacy First"],
+    status: "Active Development",
+    github: "",
+    live: "",
+    image: "/projects/paperforge.jpg",
     imageFit: "cover"
   },
   {
@@ -57,7 +69,7 @@ export const featuredProjects = [
     status: "Active Development",
     github: "https://github.com/ProfMohsinKhan/Passport-size-photo-maker",
     live: "",
-    image: "/projects/passport-photo-studio.png",
+    image: "/projects/passport_photo_studio.jpg",
     imageFit: "cover"
   }
 ];

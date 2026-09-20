@@ -86,7 +86,7 @@ function Projects() {
               <div className="project-actions">
                 {project.github && (
                   <a href={project.github} target="_blank" rel="noreferrer" className="action-btn">
-                    <FaGithub /> {project.id === 'passport-photo-studio' ? 'Repository' : 'GitHub'}
+                    <FaGithub /> {!project.github.includes('Faizzsyed') ? 'Repository' : 'GitHub'}
                   </a>
                 )}
                 

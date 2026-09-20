@@ -359,10 +359,14 @@ body{
   }
   
   /* Editorial layout for featured items */
-  .featured-card:first-child {
+  .featured-card:first-child, .featured-card:nth-child(6) {
     grid-column: span 2;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
+  }
+  
+  .featured-card:nth-child(6) {
+    grid-template-columns: 1fr 1.2fr;
   }
 }
 
@@ -392,7 +396,8 @@ body{
 }
 
 @media(min-width: 1024px) {
-  .featured-card:first-child .featured-image-container {
+  .featured-card:first-child .featured-image-container,
+  .featured-card:nth-child(6) .featured-image-container {
     aspect-ratio: auto;
     height: 100%;
     min-height: 350px;
