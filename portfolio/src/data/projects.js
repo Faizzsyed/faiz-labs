@@ -1,27 +1,27 @@
 export const featuredProjects = [
   {
     id: "pdf-tools",
-    title: "PDF Tools / PDFMate",
+    title: "PDF Tools",
     category: "Mobile",
     desc: "Premium PDF utility application with real PDF processing tools including Merge PDF, Split PDF, Organize Pages, Remove Pages and Sign PDF.",
     tech: ["Flutter", "Dart", "Native PDF processing", "Local storage"],
     status: "Active Development",
     github: "",
     live: "",
-    image: "/projects/pdf-tools.png",
+    image: "/projects/pdfmate_mark.png",
     imageFit: "contain",
     imageBackground: "rgba(10, 15, 35, 0.8)"
   },
   {
-    id: "varys",
-    title: "Varys",
-    category: "Desktop",
-    desc: "Privacy-focused desktop voice assistant with local Whisper speech recognition and an Electron + React architecture.",
-    tech: ["Electron", "React", "TypeScript", "Whisper", "Hugging Face"],
+    id: "attendai",
+    title: "AttendAI",
+    category: "AI / Academic Platform",
+    desc: "AI-powered attendance and academic management platform with face enrollment, attendance tracking, role-based dashboards, reports, timetables and academic workflows.",
+    tech: ["Python", "Flet", "FastAPI", "MongoDB", "OpenCV"],
     status: "Active Development",
-    github: "https://github.com/Faizzsyed/Varys",
+    github: "https://github.com/Faizzsyed/attendai-pro",
     live: "",
-    image: "/projects/varys.png",
+    image: "",
     imageFit: "cover"
   },
   {

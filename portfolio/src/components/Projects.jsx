@@ -18,11 +18,10 @@ const ProjectImage = ({ src, alt, title, project }) => {
           src={src} 
           alt={alt} 
           loading="lazy"
-          className={`project-screenshot ${isLoaded ? 'loaded' : ''}`}
+          className={`project-screenshot ${isLoaded ? 'loaded' : ''} ${fit === 'contain' ? 'project-logo' : ''}`}
           style={{ 
             objectFit: fit, 
-            objectPosition: position, 
-            padding: fit === 'contain' ? '30px' : '0' 
+            objectPosition: position
           }}
           onLoad={() => setIsLoaded(true)}
           onError={() => setHasError(true)}

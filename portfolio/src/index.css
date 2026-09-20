@@ -428,6 +428,16 @@ body{
   opacity: 1;
 }
 
+.project-logo {
+  width: auto;
+  height: auto;
+  max-width: 65%;
+  max-height: 65%;
+  margin: auto;
+  right: 0;
+  bottom: 0;
+}
+
 .placeholder-text {
   font-size: 5rem;
   font-weight: 800;
