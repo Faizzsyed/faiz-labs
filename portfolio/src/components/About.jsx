@@ -7,16 +7,33 @@ function About() {
 
       <div className="about-content">
         <p className="about-text">
-          I am an Electronics & Computer Science Engineering student focused on building complete, usable products. 
-          My development experience spans across web platforms, mobile applications, and desktop utilities. 
-          I frequently experiment with local AI models, IoT integrations, and automation systems to bridge hardware and software.
+          Hi, I'm Faiz Sayyed, an Electronics & Computer Science Engineering student focused on building practical digital products.
+          <br /><br />
+          I work across full-stack web applications, mobile utilities, desktop software and AI-powered experiments. I enjoy taking an idea from an initial concept to a usable product — designing the interface, building the logic and refining the experience along the way.
+          <br /><br />
+          Most of my learning comes through building real projects, from PDF utilities and business platforms to e-commerce experiences, desktop assistants and experimental interactive applications.
         </p>
 
-        <div className="about-labels">
-          <span className="about-label">Engineering Student</span>
-          <span className="about-label">Full Stack</span>
-          <span className="about-label">Desktop Apps</span>
-          <span className="about-label">AI Experiments</span>
+        <div className="what-i-build">
+          <h3 className="build-heading">What I Build</h3>
+          <div className="build-grid">
+            <div className="build-card">
+              <h4>Full Stack</h4>
+              <p>React, Node.js and product-focused web applications</p>
+            </div>
+            <div className="build-card">
+              <h4>Mobile</h4>
+              <p>Flutter utilities and mobile-first experiences</p>
+            </div>
+            <div className="build-card">
+              <h4>Desktop</h4>
+              <p>Python and Electron-based desktop applications</p>
+            </div>
+            <div className="build-card">
+              <h4>AI Experiments</h4>
+              <p>Local AI, voice interfaces and intelligent workflows</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

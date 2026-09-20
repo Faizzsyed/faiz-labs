@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import AccentSwitcher from "./AccentSwitcher";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,8 +18,14 @@ function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <a href="#" className="navbar-logo">FAIZ SAYYED</a>
 
-      <div className="mobile-menu-icon" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <FaTimes /> : <FaBars />}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <div className="desktop-switcher">
+          <AccentSwitcher />
+        </div>
+
+        <div className="mobile-menu-icon" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </div>
       </div>
 
       <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
@@ -27,6 +34,7 @@ function Navbar() {
         <li><a href="#experience" onClick={() => setIsOpen(false)}>Journey</a></li>
         <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
         <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
+        <li className="mobile-switcher"><AccentSwitcher /></li>
       </ul>
     </nav>
   );
