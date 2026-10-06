@@ -1,38 +1,17 @@
-import { FaGithub, FaLinkedin, FaArrowUp } from "react-icons/fa";
-
-function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  return (
-    <footer className="footer">
-      <div className="footer-content">
-        <h3 className="footer-logo">Faiz Sayyed</h3>
-        <p className="footer-credit">Electronics & Computer Science Engineering Student</p>
-
-        <div className="footer-nav">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div className="footer-icons">
-          <a href="https://github.com/Faizzsyed" target="_blank" rel="noreferrer" aria-label="GitHub">
-            <FaGithub />
-          </a>
-          <a href="https://www.linkedin.com/in/faizsayyed-tech" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <FaLinkedin />
-          </a>
-        </div>
-        
-        <button onClick={scrollToTop} className="back-to-top" aria-label="Back to top">
-          <FaArrowUp />
-        </button>
-      </div>
-    </footer>
-  );
+﻿import { contact } from "../data/contact";
+import { cv } from "../data/navigation";
+import { focusSection } from "../hooks/sectionNavigation";
+export default function Footer() {
+  return <footer className="site-footer container">
+    <div className="footer-main"><div><p className="footer-name">FAIZ SAYYED<span>.</span></p><p className="technical-label footer-discipline">ENGINEERING &amp; SOFTWARE</p></div>
+      <nav className="footer-links" aria-label="Footer links">
+        <a href={contact.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href={`mailto:${contact.email}`}>Email</a>
+        <a href={cv.path} target="_blank" rel="noopener noreferrer" data-cursor="CV ↗">CV <span aria-hidden="true">↗</span></a>
+      </nav>
+      <a className="footer-top technical-label" href="#index" data-cursor="UP ↑" onClick={() => requestAnimationFrame(() => focusSection("index"))}>BACK TO TOP <span aria-hidden="true">↑</span></a>
+    </div>
+    <div className="footer-bottom technical-label"><span>© {new Date().getFullYear()} Faiz Sayyed</span><span>DESIGNED &amp; BUILT BY FAIZ SAYYED</span><span>BUILT WITH REACT / VITE</span></div>
+  </footer>;
 }
-
-export default Footer;

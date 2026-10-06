@@ -1,107 +1,71 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
-import { FaGithub } from "react-icons/fa";
-import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { useReducedMotion } from "../hooks/useReducedMotion";
+import portrait from "../assets/faiz-portrait.webp";
+import TechnicalGrid from "./TechnicalGrid";
+import "../styles/hero.css";
 
-function Hero() {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+const categories = ["Full Stack Systems", "Mobile Products", "Intelligent Software"];
+const facts = [
+  { label: "Current focus", value: "Full Stack + Intelligent Systems" },
+  { label: "Status", value: "Building and shipping real products" },
+  { label: "Education", value: "B.E. Electronics & Computer Science" },
+];
+
+export default function Hero() {
+  const reducedMotion = useReducedMotion();
+  const reveal = delay => ({
+    initial: reducedMotion ? false : { opacity: 0, y: 12 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: reducedMotion ? 0 : 0.65, delay: reducedMotion ? 0 : delay, ease: [0.22, 1, 0.36, 1] },
+  });
 
   return (
-    
-    <section className="hero">
-    
-
-    <motion.h1
-  initial={{ opacity: 0, scale: 0.5 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 1 }}
->
-  FAIZ <span>SAYYED</span>
-</motion.h1>
-      <motion.h2
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="hero-subtitle"
-      >
-        Electronics & Computer Science Engineering Student
-      </motion.h2>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="hero-focus"
-      >
-       <TypeAnimation
-  sequence={[
-    "Building Full-stack Web Applications",
-    2000,
-    "Building Mobile Applications",
-    2000,
-    "Building Desktop Utilities",
-    2000,
-    "Local AI Experimentation",
-    2000,
-    "Building Product-oriented Projects",
-    2000,
-  ]}
-  speed={50}
-  repeat={Infinity}
-  className="type-animation-text"
-/>
-
-<div className="floating-icons">
-
-  <FaReact className="icon react" />
-
-  <FaNodeJs className="icon node" />
-
-  <FaPython className="icon python" />
-
-</div>
-
+    <section className="hero container" id="index" aria-labelledby="hero-name">
+      <div className="hero-topline technical-label">
+        <span><span className="index-mark" aria-hidden="true" />Personal portfolio / Vol. 01</span>
+        <span>Mumbai, India / 2026</span>
+      </div>
+      <div className="hero-composition">
+        <div className="hero-copy">
+          <motion.p className="hero-eyebrow technical-label" {...reveal(0.05)}>
+            <span className="accent-marker" aria-hidden="true" />Engineering student &amp; product builder
+          </motion.p>
+          <h1 className="hero-name" id="hero-name" aria-label="Faiz Sayyed.">
+            {["FAIZ", "SAYYED."].map((line, index) => <span className="name-mask" key={line} aria-hidden="true">
+              <motion.span initial={reducedMotion ? false : { y: "105%" }} animate={{ y: 0 }}
+                transition={{ duration: reducedMotion ? 0 : 0.85, delay: reducedMotion ? 0 : 0.1 + index * 0.12, ease: [0.22, 1, 0.36, 1] }}>{line}</motion.span>
+            </span>)}
+          </h1>
+          <motion.p className="hero-statement" {...reveal(0.35)}>
+            Building software, intelligent systems,<br className="desktop-break" /> and products people can actually use.
+          </motion.p>
+          <motion.ul className="hero-categories technical-label" {...reveal(0.5)}>
+            {categories.map((category, index) => <li key={category}><span className="category-index" aria-hidden="true">0{index + 1}</span>{category}</li>)}
+          </motion.ul>
+        </div>
+        <div className="hero-identity">
+          <TechnicalGrid reducedMotion={reducedMotion} />
+          <motion.div className="identity-label technical-label" {...reveal(0.6)}><span>00 / Identity</span><span className="accent-marker" aria-hidden="true" /></motion.div>
+          <motion.div className="portrait-frame" {...reveal(0.2)}>
+            <img className="hero-portrait" src={portrait} width="1254" height="1254"
+              alt="Faiz Sayyed wearing a charcoal blazer and black shirt" fetchPriority="high" decoding="async" />
+          </motion.div>
+          <motion.div className="portrait-caption" {...reveal(0.65)}>
+            <p className="technical-label">Curious by design.</p>
+            <span className="caption-rule" aria-hidden="true" />
+            <p className="portrait-roles technical-label">Engineer<br />Developer<br />Builder</p>
+          </motion.div>
+        </div>
+      </div>
+      <motion.div className="hero-data-strip" {...reveal(0.7)}>
+        <dl className="hero-facts">
+          {facts.map(fact => <div className="hero-fact" key={fact.label}><dt className="technical-label">{fact.label}</dt><dd>{fact.value}</dd></div>)}
+        </dl>
+        <a className="hero-scroll technical-label" href="#hero-notes"><span>Explore the <br />connections</span><span className="scroll-arrow" aria-hidden="true">↓</span></a>
       </motion.div>
-
-      <motion.div 
-        className="hero-cta-container"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5 }}
-      >
-        <a href="#projects" className="action-btn primary">
-          View Projects
-        </a>
-        <a
-          href="https://github.com/Faizzsyed"
-          target="_blank"
-          rel="noreferrer"
-          className="action-btn"
-        >
-          <FaGithub /> GitHub
-        </a>
-      </motion.div>
-
-<motion.div 
-  className="hero-domain-labels"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 2 }}
->
-  <div className="domain-label">Web</div>
-  <div className="domain-label">Mobile</div>
-  <div className="domain-label">Desktop</div>
-  <div className="domain-label">AI</div>
-</motion.div>
-
+      <div className="hero-notes technical-label" id="hero-notes">
+        <span>Electronics &amp; Computer Science</span><span>Designed with intent. Built with curiosity.</span><a href="#index">Back to index <span aria-hidden="true">↑</span></a>
+      </div>
     </section>
-    
   );
 }
-
-export default Hero;

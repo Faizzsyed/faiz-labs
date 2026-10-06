@@ -1,17 +1,11 @@
-import { useState, useEffect } from "react";
+import { MotionConfig } from "framer-motion";
 import Home from "./pages/Home";
-import Loader from "./components/Loader";
+import NotFound from "./pages/NotFound";
+import { ThemeProvider } from "./context/ThemeContext";
+import { useReducedMotion } from "./hooks/useReducedMotion";
 
-function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2500);
-  }, []);
-
-  return loading ? <Loader /> : <Home />;
+export default function App() {
+  const reduced = useReducedMotion();
+  const isHome = window.location.pathname === "/" || window.location.pathname === "/index.html";
+  return <ThemeProvider><MotionConfig reducedMotion={reduced ? "always" : "never"}>{isHome ? <Home /> : <NotFound />}</MotionConfig></ThemeProvider>;
 }
-
-export default App;

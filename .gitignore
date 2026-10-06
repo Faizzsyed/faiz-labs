@@ -14,3 +14,6 @@ Thumbs.db
 .firebase/
 firebase-debug.log*
 ui-debug.log
+
+# Local Vercel project/account metadata
+.vercel/

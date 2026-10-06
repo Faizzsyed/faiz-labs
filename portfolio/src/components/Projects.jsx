@@ -1,171 +1,36 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { featuredProjects, allProjects, filterCategories } from "../data/projects";
+import { useRef, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { projects, filterCategories } from "../data/projects";
+import ProjectRow from "./ProjectRow";
+import ProjectPreview from "./ProjectPreview";
+import ProjectDialog from "./ProjectDialog";
+import "../styles/work.css";
 
-const ProjectImage = ({ src, alt, title, project }) => {
-  const [hasError, setHasError] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const fit = project.imageFit || 'cover';
-  const position = project.imagePosition || 'center';
-  const bg = project.imageBackground || '#111';
-
-  return (
-    <div className="featured-image-container" style={{ background: bg }}>
-      {!hasError && src ? (
-        <img 
-          src={src} 
-          alt={alt} 
-          loading="lazy"
-          className={`project-screenshot ${isLoaded ? 'loaded' : ''} ${fit === 'contain' ? 'project-logo' : ''}`}
-          style={{ 
-            objectFit: fit, 
-            objectPosition: position
-          }}
-          onLoad={() => setIsLoaded(true)}
-          onError={() => setHasError(true)}
-        />
-      ) : null}
-      
-      {(hasError || !src || (!isLoaded && !hasError)) && (
-        <div className="image-placeholder">
-          <span className="placeholder-text">{title.substring(0, 1)}</span>
-        </div>
-      )}
-    </div>
-  );
-};
-
-function Projects() {
+export default function Projects() {
   const [filter, setFilter] = useState("All");
+  const [preview, setPreview] = useState(null);
+  const [selected, setSelected] = useState(null);
+  const triggerRef = useRef(null);
+  const previewRef = useRef(null);
+  const visible = filter === "All" ? projects : projects.filter(project => project.filters.includes(filter));
+  const open = (project, trigger) => { triggerRef.current = trigger; setPreview(null); setSelected(project); };
+  const selectFilter = category => { setFilter(category); setPreview(null); };
 
-  const filteredProjects = filter === "All" 
-    ? allProjects 
-    : allProjects.filter(project => project.category === filter);
-
-  return (
-    <section className="projects" id="projects">
-      <motion.h2 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        Featured Projects
-      </motion.h2>
-
-      <div className="featured-grid">
-        {featuredProjects.map((project, index) => (
-          <motion.div 
-            className="featured-card" 
-            key={project.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <ProjectImage src={project.image} alt={project.title} title={project.title} project={project} />
-            
-            <div className="featured-content">
-              <div className="project-meta">
-                <span className="project-category">{project.category}</span>
-                <span className={`project-status ${project.status === 'Completed' ? 'status-completed' : 'status-active'}`}>
-                  {project.status}
-                </span>
-              </div>
-              
-              <h3>{project.title}</h3>
-              <p>{project.desc}</p>
-              
-              <div className="tech-chips">
-                {project.tech.map(t => (
-                  <span key={t} className="chip">{t}</span>
-                ))}
-              </div>
-              
-              <div className="project-actions">
-                {project.github && (
-                  <a href={project.github} target="_blank" rel="noreferrer" className="action-btn">
-                    <FaGithub /> {!project.github.includes('Faizzsyed') ? 'Repository' : 'GitHub'}
-                  </a>
-                )}
-                
-                {project.live && (
-                  <a href={project.live} target="_blank" rel="noreferrer" className="action-btn primary">
-                    <FaExternalLinkAlt /> Live Demo
-                  </a>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="all-projects-header">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          All Projects
-        </motion.h2>
-
-        <div className="project-filters">
-          {filterCategories.map(cat => (
-            <button 
-              key={cat} 
-              className={`filter-btn ${filter === cat ? 'active' : ''}`}
-              onClick={() => setFilter(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <motion.div layout className="all-projects-grid">
-        <AnimatePresence>
-          {filteredProjects.map((project) => (
-            <motion.div 
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className="all-project-card" 
-              key={project.id}
-            >
-              <div className="card-header">
-                <span className="project-category">{project.category}</span>
-              </div>
-              
-              <h3>{project.title}</h3>
-              <p>{project.desc}</p>
-              
-              <div className="tech-chips small">
-                {project.tech.map(t => (
-                  <span key={t} className="chip">{t}</span>
-                ))}
-              </div>
-              
-              <div className="project-actions small-actions">
-                {project.github && (
-                  <a href={project.github} target="_blank" rel="noreferrer" className="icon-link">
-                    <FaGithub />
-                  </a>
-                )}
-                {project.live && (
-                  <a href={project.live} target="_blank" rel="noreferrer" className="icon-link">
-                    <FaExternalLinkAlt />
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          ))}
+  return <section className="work-section container section-spacing" id="work" aria-labelledby="work-heading">
+    <div className="work-section-label technical-label"><span>01 / Selected Work</span><span>Independent products &amp; systems</span></div>
+    <div className="work-heading-row"><h2 id="work-heading">Built,<br />tested,<br /><span>shipped.</span></h2><p>A selection of products and systems built across web, mobile, Python, intelligent tools, and connected hardware.</p></div>
+    <div className="work-controls"><div className="work-filters" role="group" aria-label="Filter selected projects">
+      {filterCategories.map(category => <button key={category} className="work-filter technical-label" type="button" aria-pressed={filter === category} onClick={() => selectFilter(category)}>{category}</button>)}
+    </div><p className="work-count technical-label" role="status" aria-live="polite">{String(visible.length).padStart(2, "0")} / {filter === "All" ? "Selected projects" : `${filter} projects`}</p></div>
+    <div className="work-index">
+      <ol className="work-list" onPointerLeave={() => setPreview(null)}>
+        <AnimatePresence initial={false}>
+          {visible.map(project => <ProjectRow key={project.id} project={project} onOpen={open} onPreview={setPreview} onMove={event => previewRef.current?.move(event)} />)}
         </AnimatePresence>
-      </motion.div>
-    </section>
-  );
+      </ol>
+      <ProjectPreview ref={previewRef} project={preview} />
+    </div>
+    <div className="work-endnote technical-label"><span>From concept to something useful.</span><a href="#pacepdf">Inside the featured product <span aria-hidden="true">↓</span></a></div>
+    <ProjectDialog project={selected} onClose={() => setSelected(null)} triggerRef={triggerRef} />
+  </section>;
 }
-
-export default Projects;
