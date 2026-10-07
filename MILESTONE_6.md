@@ -28,7 +28,7 @@ Milestone 6 files already present and verified: `portfolio/index.html`, `src/App
 
 Contact displays LET'S BUILD / SOMETHING USEFUL. Links use shared data:
 
-- Email: `faizusayed256@gmail.com` via `mailto:`.
+- Email: `er.faizsayyed@gmail.com` via `mailto:`.
 - LinkedIn: `https://www.linkedin.com/in/faizsayyed-tech`.
 - GitHub: `https://github.com/Faizzsyed`.
 

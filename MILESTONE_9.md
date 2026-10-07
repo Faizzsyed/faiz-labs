@@ -12,7 +12,7 @@ The connected Browser runtime still exposed no browser. Reused the existing temp
 
 Verified mounted content and the actual one-page resume PDF:
 
-- Faiz Sayyed; `faizusayed256@gmail.com`; GitHub `https://github.com/Faizzsyed`; LinkedIn `https://www.linkedin.com/in/faizsayyed-tech`; canonical `https://faiz-labs.netlify.app/`.
+- Faiz Sayyed; `er.faizsayyed@gmail.com`; GitHub `https://github.com/Faizzsyed`; LinkedIn `https://www.linkedin.com/in/faizsayyed-tech`; canonical `https://faiz-labs.netlify.app/`.
 - Diploma in Information Technology, Thakur Polytechnic, Kandivali, Mumbai, completed 2023. B.E. Electronics & Computer Science, Shree L. R. Tiwari College of Engineering, expected 2027. The timeline displays the 2023–2027 range; the resume explicitly says “Expected 2027.”
 - Python Developer Intern at Codec Technologies, Mar 2026–Present; Software Tester Intern at Elite Forums, Dec 2024–Jan 2025. Dates and responsibilities match shared data and the resume.
 - Six canonical projects: PacePDF, Connectwell, AttendAI Pro, Passport Photo Studio, IoT Plant Monitoring System and PaperForge. The IoT row intentionally uses its shorter title; the detail dialog uses the full name. Connectwell likewise retains its full title in details.
@@ -33,7 +33,7 @@ Checked on 6 October 2026 using web reads and direct HTTP requests, plus local p
 | [LinkedIn](https://www.linkedin.com/in/faizsayyed-tech) | VALID supplied destination; availability unverified | Matches user's verified URL and resume annotation. Automated access returns HTTP 999; this does not establish a broken profile. |
 | Canonical portfolio root | VALID | `https://faiz-labs.netlify.app/` returns HTTP 200. |
 | `/Faiz_Sayyed_Resume.pdf` | VALID in build; MISSING on current host | Local HTTP 200, real `%PDF-` signature, 149,083 bytes, one page, parsed identity/education/experience and correct URI annotations. Navbar/Footer popup and palette download passed. Current hosted path returns 404; publish the new build and recheck. |
-| `mailto:faizusayed256@gmail.com` | VALID | All mounted email targets and resume annotation match the supplied address; mail delivery was not tested. |
+| `mailto:er.faizsayyed@gmail.com` | VALID | All mounted email targets and resume annotation match the supplied address; mail delivery was not tested. |
 | Old Connectwell repository | BROKEN; INTENTIONALLY HIDDEN | `https://github.com/Faizzsyed/connectwell-digital` still returns 404. Canonical github remains null; no broken CTA is visible in the build. |
 | Other missing project repositories | MISSING; INTENTIONALLY HIDDEN | PacePDF and IoT github values remain null. |
 | Project live URLs | MISSING; INTENTIONALLY HIDDEN | All six live values remain null; no invented CTAs. |

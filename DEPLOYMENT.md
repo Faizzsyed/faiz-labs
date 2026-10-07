@@ -31,7 +31,7 @@ Configuration reference: https://vercel.com/docs/project-configuration.
 
 - Load the homepage and check the hero and portrait, Work, abstract PacePDF case study, Field Map, Trajectory, Experience, Skills, Contact and Footer.
 - Check light/dark mode, keyboard focus, command palette, active navigation and mobile menu.
-- Check copy-email copies `faizusayed256@gmail.com`.
+- Check copy-email copies `er.faizsayyed@gmail.com`.
 - Check navbar/footer/palette CV actions and `/Faiz_Sayyed_Resume.pdf`.
 - Check `/faiz-portrait.webp`, `/favicon.svg`, `/robots.txt` and hashed JS/CSS assets return successfully.
 - Check mobile/tablet/desktop widths for overflow, browser console for errors and network requests for failed assets.

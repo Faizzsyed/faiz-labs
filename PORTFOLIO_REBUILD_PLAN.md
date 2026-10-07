@@ -71,7 +71,7 @@ Root node_modules includes **913 tracked files**, despite ignore rules. Do not d
 | Varys | Public repo and README describe React/TypeScript, local voice input and Ollama. Strong additional AI candidate; verify implementation before claiming completed automation, wake-word or speech output |
 | PaperForge | Real public client/server repository; README describes React/Node/Express document tools. Retain as optional secondary work, correct the old Desktop classification, and avoid unverified tool-count/performance claims |
 | Other work | Preserve existing data. WishCraft is a possible secondary web project; do not promote experiments solely to fill space |
-| Email | User-confirmed address: `faizusayed256@gmail.com`. Use one shared identity record |
+| Email | User-confirmed address: `er.faizsayyed@gmail.com`. Use one shared identity record |
 | Education | Brief supplies diploma completed 2023, B.E. expected 2027 and lateral-entry route. No verified CGPA found; display no CGPA. The requested 2023–2027 timeline may describe the degree cohort rather than actual lateral-entry start; clarify the start year before asserting enrollment dates |
 | Project years | Current project data lacks project-year fields. Use verified dates only; repository modification dates do not prove creation/release dates |
 
