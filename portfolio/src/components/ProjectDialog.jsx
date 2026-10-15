@@ -50,8 +50,8 @@ export default function ProjectDialog({ project, onClose, triggerRef }) {
           {project.attribution && <p className="dialog-attribution">{project.attribution}</p>}
           <div className="project-links">
             {project.github && <a className="editorial-link technical-label" href={project.github} target="_blank" rel="noopener noreferrer">{project.githubLabel || "GitHub"} <span aria-hidden="true">↗</span></a>}
-            {project.live && <a className="editorial-link technical-label" href={project.live} target="_blank" rel="noopener noreferrer">View live <span aria-hidden="true">↗</span></a>}
-            {project.playStoreUrl && <a className="editorial-link technical-label" href={project.playStoreUrl} target="_blank" rel="noopener noreferrer">Google Play <span aria-hidden="true">↗</span></a>}
+            {project.live && <a className="editorial-link technical-label" href={project.live} target="_blank" rel="noopener noreferrer">{project.id === "pacepdf" ? "PacePDF website" : "View live"} <span aria-hidden="true">↗</span></a>}
+            {project.playStoreUrl && <a className="editorial-link technical-label" href={project.playStoreUrl} target="_blank" rel="noopener noreferrer">Get it on Google Play <span aria-hidden="true">↗</span></a>}
             {project.id === "pacepdf" && <a className="editorial-link technical-label" href="#pacepdf" onClick={onClose}>Read product story <span aria-hidden="true">↓</span></a>}
           </div>
         </div>

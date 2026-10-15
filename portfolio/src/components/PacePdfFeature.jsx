@@ -37,9 +37,7 @@ function DocumentStudy({ step, reduced }) {
 export default function PacePdfFeature() {
   const reduced = useReducedMotion();
   const [activeStep, setActiveStep] = useState(0);
-  const productUrl = pacePdf.live || pacePdf.playStoreUrl;
   const reveal = { initial: reduced ? false : { opacity: 0, y: 12 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: reduced ? 0 : 0.45 } };
-  const ctaContent = <><span>Explore {pacePdf.title}</span><span className="technical-label">Product page</span><span className="pace-cta-arrow" aria-hidden="true">↗</span></>;
 
   return <section className="pace-section container section-spacing" id="pacepdf" aria-labelledby="pace-heading">
     <div className="pace-case-layout">
@@ -61,14 +59,14 @@ export default function PacePdfFeature() {
         <div className="pace-case-meta technical-label"><span>04 / Case file</span><span>Document utilities</span></div>
         <h2 id="pace-heading">{pacePdf.title}<span aria-hidden="true">.</span></h2>
         <p className="pace-case-statement">Fast, private PDF tools for everyday documents.</p>
-        <p className="pace-case-description">A focused PDF utility project for everyday document workflows. The product page provides the details of the available tools.</p>
+        <p className="pace-case-description">Now available on Google Play for Android. PacePDF brings everyday document workflows into one focused utility. The product page provides the details of the available tools.</p>
         <div className="pace-project-context">
           <h3 className="technical-label">Project context</h3>
           <ul><li><span aria-hidden="true">↳</span> PDF and document utilities</li><li><span aria-hidden="true">↳</span> Explore the available tools on the product page</li></ul>
         </div>
         <div className="pace-case-action">
-          {productUrl ? <a className="pace-product-cta" href={productUrl} target="_blank" rel="noopener noreferrer">{ctaContent}</a> :
-            <><button className="pace-product-cta" type="button" aria-disabled="true" aria-describedby="pace-link-note">{ctaContent}</button><p className="pace-link-note technical-label" id="pace-link-note">Product link coming soon.</p></>}
+          <a className="pace-product-cta" href={pacePdf.playStoreUrl} target="_blank" rel="noopener noreferrer"><span>Get it on Google Play</span><span className="technical-label">Android</span><span className="pace-cta-arrow" aria-hidden="true">↗</span></a>
+          <a className="editorial-link technical-label" href={pacePdf.live} target="_blank" rel="noopener noreferrer">Explore PacePDF website <span aria-hidden="true">↗</span></a>
         </div>
       </motion.div>
     </div>

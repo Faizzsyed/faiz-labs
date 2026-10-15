@@ -4,18 +4,17 @@ export const projects = [
   {
     id: "pacepdf", number: "01", title: "PacePDF", descriptor: "Mobile PDF toolkit",
     category: "Mobile product", filters: ["Mobile"], year: 2026,
-    tech: ["Flutter", "Dart"], status: "Shipped product", featured: true,
-    description: "A focused mobile utility designed to make everyday PDF tasks fast, private, and accessible directly on Android.",
+    tech: ["Flutter", "Dart"], status: "Published on Google Play", featured: true,
+    description: "Now available on Google Play, PacePDF is a focused mobile utility designed to make everyday PDF tasks fast, private, and accessible directly on Android.",
     role: "Flutter application development", platform: "Android",
     features: ["Merge PDF files", "Split ranges or selected pages", "Organize and remove pages", "Text and image watermarks", "Place signatures on PDF pages", "Local file history and saved outputs", "Export and share documents"],
-    github: null, live: null,
-    // Add the actual published Google Play listing here. Do not substitute a search URL.
-    playStoreUrl: null,
+    github: null, live: "https://pacepdf-web.vercel.app/",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.pacepdf.app",
     image: null, imageLabel: "Product capture pending",
     // Populate with actual app captures: { src, alt, label }.
     screenshots: [],
-    linkAudit: { github: "missing", live: "missing", store: "missing" },
-    sourceNote: "Name, production status, features and year supplied in the portfolio brief. Store listing and app captures have not been supplied.",
+    linkAudit: { github: "missing", live: "valid", store: "valid" },
+    sourceNote: "Public Google Play launch and official product website supplied in the launch brief; both URLs verified. App captures have not been supplied.",
   },
   {
     id: "connectwell", number: "02", title: "Connectwell", fullTitle: "Connectwell Digital Marketing Platform",
@@ -101,5 +100,5 @@ export const paceFeatures = [
 export const paceStory = [
   { number: "01", title: "Problem", text: "PDF tools on mobile often feel fragmented, slow, or dependent on online workflows." },
   { number: "02", title: "Approach", text: "Build essential document operations into one focused Flutter app with local file handling and straightforward interaction." },
-  { number: "03", title: "Result", text: "A production-ready Android utility covering everyday PDF workflows, from organization to signing and sharing." },
+  { number: "03", title: "Result", text: "An Android utility published on Google Play, covering everyday PDF workflows from organization to signing and sharing." },
 ];
